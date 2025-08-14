@@ -17,9 +17,6 @@ createRoot(document.getElementById("root")).render(
         <Route path={"/cadastro"} element={<Cadastro />} />
         <Route path={"/dashboard"} element={<Dashboard />} />
         <Route path={"/login"} element={<Login />} />
-
-        {/* rotas de explicacao */}
-        <Route path={"/Estado"} element={<CondicaoEstado />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>
