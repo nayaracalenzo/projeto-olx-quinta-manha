@@ -1,8 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 
-export default function Header({ pagina }) {
+export default function Header({ pagina, setOpen }) {
   const [state, setState] = useState(false);
   const navRef = useRef();
+
+  function handleAbrirDrawer() {
+    setOpen(true);
+  }
 
   // Replace javascript:void(0) path with your path
   const navigation = [
@@ -106,12 +110,12 @@ export default function Header({ pagina }) {
 
               {pagina === "/dashboard" && (
                 <li className="mt-8 lg:mt-0">
-                  <a
-                    href="javascript:void(0)"
+                  <button
+                    onClick={handleAbrirDrawer}
                     className="py-3 px-4 text-center text-white bg-[#6F0AD6] hover:bg-indigo-700 rounded-md shadow block lg:inline"
                   >
                     Adicionar anúncio
-                  </a>
+                  </button>
                 </li>
               )}
             </ul>

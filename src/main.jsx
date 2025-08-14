@@ -6,8 +6,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Cadastro from "./pages/Cadastro.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import Login from "./pages/Login.jsx";
-import Estado from "./explicacoes/Estado.jsx";
-import CondicaoEstado from "./explicacoes/CondicaoEstado.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
