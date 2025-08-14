@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-export default function Header() {
+export default function Header({ pagina }) {
   const [state, setState] = useState(false);
   const navRef = useRef();
 
@@ -103,14 +103,17 @@ export default function Header() {
                   Login
                 </a>
               </li>
-              <li className="mt-8 lg:mt-0">
-                <a
-                  href="javascript:void(0)"
-                  className="py-3 px-4 text-center text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow block lg:inline"
-                >
-                  Sign Up
-                </a>
-              </li>
+
+              {pagina === "/dashboard" && (
+                <li className="mt-8 lg:mt-0">
+                  <a
+                    href="javascript:void(0)"
+                    className="py-3 px-4 text-center text-white bg-[#6F0AD6] hover:bg-indigo-700 rounded-md shadow block lg:inline"
+                  >
+                    Adicionar anúncio
+                  </a>
+                </li>
+              )}
             </ul>
           </div>
           <div className="flex-1">
