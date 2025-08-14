@@ -27,6 +27,24 @@ export default function BodyList({ text = "Meus anúncios" }) {
       location: "Remote",
       href: "javascript:void(0)",
     },
+    {
+      title: "Full-Stack Developer",
+      desc: "This position is 100% remote, working as part of a small, multi-functional team. You must be confident at working alone.",
+      date: "Jan 2, 2022",
+      salary: "163,273 USD",
+      type: "Full-time",
+      location: "Remote",
+      href: "javascript:void(0)",
+    },
+    {
+      title: "Full-Stack Developer",
+      desc: "This position is 100% remote, working as part of a small, multi-functional team. You must be confident at working alone.",
+      date: "Jan 2, 2022",
+      salary: "163,273 USD",
+      type: "Full-time",
+      location: "Remote",
+      href: "javascript:void(0)",
+    },
   ];
 
   return (
@@ -90,22 +108,17 @@ export default function BodyList({ text = "Meus anúncios" }) {
                   </div>
                 </div>
                 <div className="mt-4 items-center space-y-4 text-sm sm:flex sm:space-x-4 sm:space-y-0">
-                  <span className="flex items-center text-gray-500">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5 mr-2"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z"
-                        clipRule="evenodd"
-                      />
-                      <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z" />
-                    </svg>
-                    {item.type}
-                  </span>
+                  {text === "Meus anúncios" && (
+                    <>
+                      <button className="px-6 py-2 rounded-md bg-[#8CE563]">
+                        Editar
+                      </button>
+                      <button className="px-6 py-2 rounded-md bg-[#F28000]">
+                        Deletar
+                      </button>
+                    </>
+                  )}
+
                   <span className="flex items-center text-gray-500">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"

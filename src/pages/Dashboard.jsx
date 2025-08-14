@@ -1,4 +1,5 @@
 import BodyList from "../components/BodyList";
+import Drawer from "../components/Drawer";
 import Header from "../components/Header";
 
 export default function Dashboard() {
@@ -6,6 +7,7 @@ export default function Dashboard() {
     <div>
       <Header pagina={"/dashboard"} />
       <BodyList />
+      <Drawer />
     </div>
   );
 }
