@@ -203,6 +203,36 @@ export default function Cadastro() {
                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
               />
             </div>
+            <div>
+              <label className="font-medium">Telefone</label>
+              <input
+                type="number"
+                required
+                className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+              />
+            </div>
+            <div>
+              <label className="font-medium">Cidade</label>
+              <input
+                type="text"
+                required
+                className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+              />
+            </div>
+            <div>
+              <label className="font-medium">Estado</label>
+              <select
+                required
+                className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+              >
+                <option value="">Selecione um estado</option>
+                <option value="SP">São Paulo</option>
+                <option value="RJ">Rio de Janeiro</option>
+                <option value="MG">Minas Gerais</option>
+                <option value="RS">Rio Grande do Sul</option>
+                <option value="BA">Bahia</option>
+              </select>
+            </div>
             <button className="w-full px-4 py-2 text-white font-medium bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-600 rounded-lg duration-150">
               Criar conta
             </button>
