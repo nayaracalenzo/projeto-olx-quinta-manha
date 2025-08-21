@@ -1,4 +1,4 @@
-export default function BodyList({ text = "Meus anúncios" }) {
+export default function BodyList({ text = "Meus anúncios", setOpenModal }) {
   const jobs = [
     {
       title: "UI – Front End Dev",
@@ -46,6 +46,10 @@ export default function BodyList({ text = "Meus anúncios" }) {
       href: "javascript:void(0)",
     },
   ];
+
+  function handleAbrirModalDeletar() {
+    setOpenModal(true);
+  }
 
   return (
     <section className="mt-12 max-w-screen-lg mx-auto px-4 md:px-8">
@@ -113,7 +117,10 @@ export default function BodyList({ text = "Meus anúncios" }) {
                       <button className="px-6 py-2 rounded-md bg-[#8CE563]">
                         Editar
                       </button>
-                      <button className="px-6 py-2 rounded-md bg-[#F28000]">
+                      <button
+                        onClick={handleAbrirModalDeletar}
+                        className="px-6 py-2 rounded-md bg-[#F28000]"
+                      >
                         Deletar
                       </button>
                     </>

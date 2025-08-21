@@ -9,10 +9,16 @@ export default function Detalhes() {
   return (
     <main className="flex overflow-hidden">
       <div className="flex-1 hidden lg:block">
-        <img
-          src="https://images.unsplash.com/photo-1697135807547-5fa9fd22d9ec?auto=format&fit=crop&q=80&w=3387&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          className="w-full h-screen object-cover"
-        />
+        <div className="h-full flex items-center justify-center">
+          <img
+            src={
+              "https://images.unsplash.com/photo-1556155092-490a1ba16284?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+            }
+            loading="lazy"
+            alt="foto anúncio"
+            className="rounded-lg w-[500px]"
+          />
+        </div>
       </div>
       <div className="py-12 flex-1 lg:flex lg:justify-center lg:h-screen lg:overflow-auto">
         <div className="max-w-lg flex-1 mx-auto px-4 text-gray-600">
