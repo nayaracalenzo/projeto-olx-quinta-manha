@@ -1,5 +1,6 @@
 import BodyList from "../components/BodyList";
 import Drawer from "../components/Drawer";
+import FormAddAnuncio from "../components/FormAddAnuncio";
 import Header from "../components/Header";
 import { useState } from "react";
 
@@ -10,7 +11,9 @@ export default function Dashboard() {
     <div>
       <Header pagina={"/dashboard"} setOpen={setOpen} />
       <BodyList />
-      <Drawer open={open} setOpen={setOpen} />
+      <Drawer open={open} setOpen={setOpen} tituloDrawer={"Adicionar Anúncio"}>
+        <FormAddAnuncio />
+      </Drawer>
     </div>
   );
 }
