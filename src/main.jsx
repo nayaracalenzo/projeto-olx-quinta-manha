@@ -7,6 +7,7 @@ import Cadastro from "./pages/Cadastro.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import Login from "./pages/Login.jsx";
 import Detalhes from "./pages/Detalhes.jsx";
+import { ToastContainer } from "react-toastify";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -18,6 +19,7 @@ createRoot(document.getElementById("root")).render(
         <Route path={"/login"} element={<Login />} />
         <Route path={"/anuncio/:id"} element={<Detalhes />} />
       </Routes>
+      <ToastContainer />
     </BrowserRouter>
   </StrictMode>
 );
