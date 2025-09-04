@@ -35,16 +35,13 @@ export default function Cadastro() {
     };
 
     try {
-      const response = await fetch(
-        "https://dc-classificados.up.railway.app/api/auth/register",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        }
-      );
+      const response = await fetch(`${baseURL}/auth/register`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
       if (response.ok) {
         toast.success("Cadastro realizado com sucesso!");
@@ -56,6 +53,8 @@ export default function Cadastro() {
       console.error(error);
     }
   }
+
+  const baseURL = process.env.BASE_URL;
 
   return (
     <main className="w-full flex">
