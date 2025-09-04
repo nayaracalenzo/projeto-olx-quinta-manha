@@ -14,7 +14,7 @@ export default function Dashboard() {
       <Header pagina={"/dashboard"} setOpen={setOpen} />
       <BodyList setOpenModal={setOpenModal} />
       <Drawer open={open} setOpen={setOpen} tituloDrawer={"Adicionar Anúncio"}>
-        <FormAddAnuncio />
+        <FormAddAnuncio setOpen={setOpen} />
       </Drawer>
       <Modal open={openModal} setOpen={setOpenModal} />
     </div>
