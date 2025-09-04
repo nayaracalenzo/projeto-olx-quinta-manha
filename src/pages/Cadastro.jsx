@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { estadosBrasil } from "../utils/estadosBrasil";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { baseURL } from "../utils/baseURL";
 
 export default function Cadastro() {
   const navigate = useNavigate();
@@ -53,8 +54,6 @@ export default function Cadastro() {
       console.error(error);
     }
   }
-
-  const baseURL = process.env.BASE_URL;
 
   return (
     <main className="w-full flex">
