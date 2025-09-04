@@ -1,7 +1,11 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { baseURL } from "../utils/baseURL";
+import { toast } from "react-toastify";
 
 export default function Login() {
+  const navigate = useNavigate();
+
   const [dataLogin, setDataLogin] = useState({
     email: "",
     senha: "",
@@ -15,12 +19,35 @@ export default function Login() {
     });
   }
 
-  function handleSubmitLogin(event) {
+  async function handleSubmitLogin(event) {
     event.preventDefault();
 
     console.log(dataLogin);
 
-    
+    try {
+      const response = await fetch(`${baseURL}/auth/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(dataLogin),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("userId", data.userId);
+
+        toast.success("Login feito com sucesso");
+
+        navigate("/dashboard");
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   return (
