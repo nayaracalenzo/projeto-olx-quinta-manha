@@ -18,9 +18,10 @@ export default function App() {
       });
 
       const data = await response.json();
-
+      console.log(data)
       if (response.ok) {
         setTodosOsAnuncios(data);
+        setIsLoading(false)
       } else {
         toast.error(data.message);
       }
@@ -42,7 +43,7 @@ export default function App() {
       ) : (
         <>
           <Header />
-          <BodyList text={"Todos os anúncios"} />
+          <BodyList text={"Todos os anúncios"} anuncios={todosOsAnuncios}/>
         </>
       )}
     </div>
