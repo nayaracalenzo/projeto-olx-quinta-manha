@@ -49,3 +49,6 @@ export default function App() {
     </div>
   );
 }
+
+//comando para alterar a origem remota do github:
+//git remote set-url origin "https://github.com/nayaracalenzo/pro..."

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function BodyList({ text = "Meus anúncios", setOpenModal, anuncios }) {
+export default function BodyList({ text = "Meus anúncios", setOpenModal, anuncios , setAnuncioSelecionado }) {
   const jobs = [
     {
       title: "UI – Front End Dev",
@@ -49,7 +49,8 @@ export default function BodyList({ text = "Meus anúncios", setOpenModal, anunci
     },
   ];
 
-  function handleAbrirModalDeletar() {
+  function handleAbrirModalDeletar(anuncio) {
+    setAnuncioSelecionado(anuncio)
     setOpenModal(true);
   }
   return (
@@ -62,7 +63,7 @@ export default function BodyList({ text = "Meus anúncios", setOpenModal, anunci
 
         {anuncios.map((item, idx) => (
           <li key={idx} className="p-5 bg-white rounded-md shadow-sm">
-            <Link to={`/anuncio/${item.id}`} className="flex flex-row gap-5">
+            <Link to={`/dashboard`} className="flex flex-row gap-5">
               <img
                 src={item.imagem}
                 loading="lazy"
@@ -124,7 +125,7 @@ export default function BodyList({ text = "Meus anúncios", setOpenModal, anunci
                         Editar
                       </button>
                       <button
-                        onClick={handleAbrirModalDeletar}
+                        onClick={handleAbrirModalDeletar(item)}
                         className="px-6 py-2 rounded-md bg-[#F28000]"
                       >
                         Deletar
@@ -145,7 +146,7 @@ export default function BodyList({ text = "Meus anúncios", setOpenModal, anunci
                         clipRule="evenodd"
                       />
                     </svg>
-                    {item.location}
+                    {`${item.usuario.cidade}/${item.usuario.estado}`}
                   </span>
                 </div>
               </div>
