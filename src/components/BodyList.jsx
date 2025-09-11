@@ -125,7 +125,7 @@ export default function BodyList({ text = "Meus anúncios", setOpenModal, anunci
                         Editar
                       </button>
                       <button
-                        onClick={handleAbrirModalDeletar(item)}
+                        onClick={()=> handleAbrirModalDeletar(item)}
                         className="px-6 py-2 rounded-md bg-[#F28000]"
                       >
                         Deletar
