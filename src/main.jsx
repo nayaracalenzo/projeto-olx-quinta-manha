@@ -8,10 +8,12 @@ import Dashboard from "./pages/Dashboard.jsx";
 import Login from "./pages/Login.jsx";
 import Detalhes from "./pages/Detalhes.jsx";
 import { ToastContainer } from "react-toastify";
+import { AnuncioProvider } from "./context/AnuncioContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
+    <AnuncioProvider>
       <Routes>
         <Route path={"/"} element={<App />} />
         <Route path={"/cadastro"} element={<Cadastro />} />
@@ -20,6 +22,7 @@ createRoot(document.getElementById("root")).render(
         <Route path={"/anuncio/:id"} element={<Detalhes />} />
       </Routes>
       <ToastContainer />
+      </AnuncioProvider>
     </BrowserRouter>
   </StrictMode>
 );

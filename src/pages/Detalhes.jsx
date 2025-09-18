@@ -1,4 +1,18 @@
+import { useContext, useEffect, useState } from "react";
+import { AnuncioContext } from "../context/AnuncioContext";
+
 export default function Detalhes() {
+  const [form, setForm] = useState({
+    titulo: "",
+    preco: "",
+    descricaoCurta: "",
+    descricaoCompleta: "",
+    imagem: ""
+  })
+
+  const {anuncioSelecionado} = useContext(AnuncioContext)
+  console.log("anuncio selecionado:", anuncioSelecionado)
+
   const servicesItems = [
     "Mobile development",
     "UI/UX Design",
@@ -6,13 +20,38 @@ export default function Detalhes() {
     "SEO",
   ];
 
+  useEffect(() => {
+    if (anuncioSelecionado) {
+      setForm({
+        titulo: anuncioSelecionado.titulo || "",
+        preco: anuncioSelecionado.preco ||"",
+        descricaoCurta: anuncioSelecionado.descricaoCurta || "",
+        descricaoCompleta: anuncioSelecionado.descricaoCompleta || "",
+        imagem: anuncioSelecionado.imagem || ""
+      })
+    }
+  }, [anuncioSelecionado])
+
+
+   function handleChange(event) {
+    const { name, value } = event.target;
+
+    setForm((prev) => {
+      return { ...prev, [name]: value };
+    });
+  }
+
+  function handleSubmit () {
+
+  }
+
   return (
     <main className="flex overflow-hidden">
       <div className="flex-1 hidden lg:block">
         <div className="h-full flex items-center justify-center">
           <img
             src={
-              "https://images.unsplash.com/photo-1556155092-490a1ba16284?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+              anuncioSelecionado.imagem
             }
             loading="lazy"
             alt="foto anúncio"
@@ -29,14 +68,18 @@ export default function Detalhes() {
             <p className="mt-3">Edite seus anúncios</p>
           </div>
           <form
-            onSubmit={(e) => e.preventDefault()}
+            onSubmit={handleSubmit}
             className="space-y-5 mt-12 lg:pb-12"
           >
             <div>
               <label className="font-medium">Titulo do anúncio</label>
+              
               <input
                 type="text"
                 required
+                name="titulo"
+                value={form.titulo}
+                onChange={handleChange}
                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-gray-800 shadow-sm rounded-lg"
               />
             </div>
@@ -45,6 +88,9 @@ export default function Detalhes() {
               <input
                 type="number"
                 required
+                name="preco"
+                value={form.preco}
+                onChange={handleChange}
                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-gray-800 shadow-sm rounded-lg"
               />
             </div>
@@ -53,7 +99,10 @@ export default function Detalhes() {
               <label className="font-medium">Descrição curta</label>
               <input
                 type="text"
+                name="descricaoCurta"
                 required
+                onChange={handleChange}
+                value={form.descricaoCurta}
                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-gray-800 shadow-sm rounded-lg"
               />
             </div>
@@ -62,6 +111,9 @@ export default function Detalhes() {
               <label className="font-medium">Descrição Completa</label>
               <textarea
                 required
+                name="descricaoCompleta"
+                value={form.descricaoCompleta}
+                onChange={handleChange}
                 className="w-full mt-2 h-36 px-3 py-2 resize-none appearance-none bg-transparent outline-none border focus:border-gray-800 shadow-sm rounded-lg"
               ></textarea>
             </div>
@@ -70,6 +122,9 @@ export default function Detalhes() {
               <label className="font-medium">Link da imagem</label>
               <input
                 type="text"
+                name="imagem"
+                onChange={handleChange}
+                value={form.imagem}
                 required
                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-gray-800 shadow-sm rounded-lg"
               />

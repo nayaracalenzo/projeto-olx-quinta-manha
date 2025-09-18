@@ -1,6 +1,9 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { AnuncioContext } from "../context/AnuncioContext";
 
-export default function BodyList({ text = "Meus anúncios", setOpenModal, anuncios , setAnuncioSelecionado }) {
+export default function BodyList({ text = "Meus anúncios", setOpenModal, anuncios }) {
+  const {setAnuncioSelecionado} = useContext(AnuncioContext)
   const navigate = useNavigate()
   const jobs = [
     {
