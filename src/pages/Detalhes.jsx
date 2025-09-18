@@ -1,7 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import { AnuncioContext } from "../context/AnuncioContext";
+import { useNavigate, useParams } from "react-router-dom";
+import { baseURL } from "../utils/baseURL";
 
 export default function Detalhes() {
+  const navigate = useNavigate()
+  const {id} = useParams()
   const [form, setForm] = useState({
     titulo: "",
     preco: "",
@@ -41,8 +45,39 @@ export default function Detalhes() {
     });
   }
 
-  function handleSubmit () {
+  async function handleSubmit (e) {
 
+    e.preventDefault()
+    try {
+      const token = localStorage.getItem("token");
+      const userId = localStorage.getItem("userId");
+
+      const response = await fetch(`${baseURL}/anuncios/updateMyAnuncio/${id}?userId=${userId}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+
+          body: JSON.stringify({
+            ...form,
+            preco: Number(form.preco),
+          }),
+        }
+      )
+
+      if (!response.ok) {
+        throw new Error("Erro ao atualizar anúncio")
+      }
+
+      const data = await response.json()
+      console.log("Anuncio Atualizado com sucesso", data)
+      navigate("/dashboard")
+
+    } catch (error) {
+      console.error(error.message);
+    }
   }
 
   return (
@@ -51,7 +86,7 @@ export default function Detalhes() {
         <div className="h-full flex items-center justify-center">
           <img
             src={
-              anuncioSelecionado.imagem
+              form.imagem
             }
             loading="lazy"
             alt="foto anúncio"
