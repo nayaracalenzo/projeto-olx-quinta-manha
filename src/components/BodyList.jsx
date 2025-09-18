@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function BodyList({ text = "Meus anúncios", setOpenModal, anuncios , setAnuncioSelecionado }) {
+  const navigate = useNavigate()
   const jobs = [
     {
       title: "UI – Front End Dev",
@@ -53,6 +54,13 @@ export default function BodyList({ text = "Meus anúncios", setOpenModal, anunci
     setAnuncioSelecionado(anuncio)
     setOpenModal(true);
   }
+
+  function handleEditar(anuncio) {
+    console.log(anuncio)
+    setAnuncioSelecionado(anuncio)
+    navigate(`/anuncio/${anuncio.id}`)
+  }
+
   return (
     <section className="mt-12 max-w-screen-lg mx-auto px-4 md:px-8">
       <div>
@@ -63,7 +71,7 @@ export default function BodyList({ text = "Meus anúncios", setOpenModal, anunci
 
         {anuncios.map((item, idx) => (
           <li key={idx} className="p-5 bg-white rounded-md shadow-sm">
-            <Link to={`/dashboard`} className="flex flex-row gap-5">
+            <div className="flex flex-row gap-5">
               <img
                 src={item.imagem}
                 loading="lazy"
@@ -121,7 +129,7 @@ export default function BodyList({ text = "Meus anúncios", setOpenModal, anunci
                 <div className="mt-4 items-center space-y-4 text-sm sm:flex sm:space-x-4 sm:space-y-0">
                   {text === "Meus anúncios" && (
                     <>
-                      <button className="px-6 py-2 rounded-md bg-[#8CE563]">
+                      <button onClick={() => handleEditar(item)} className="px-6 py-2 rounded-md bg-[#8CE563]">
                         Editar
                       </button>
                       <button
@@ -150,7 +158,7 @@ export default function BodyList({ text = "Meus anúncios", setOpenModal, anunci
                   </span>
                 </div>
               </div>
-            </Link>
+            </div>
           </li>
         ))}
         {jobs.map((item, idx) => (
